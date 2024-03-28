@@ -9,9 +9,19 @@ import SwiftUI
 
 @main
 struct MY_CLOTHINGSApp: App {
+    @StateObject private var cartManager = ShoppingCartViewModel()
+    @State private var isAppLoaded = false
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
-        }
+            if isAppLoaded {
+                            BottomNavigationBarView()
+                                .environmentObject(cartManager)
+                        } else {
+                            ContentView(isAppLoaded: $isAppLoaded)
+                                .environmentObject(cartManager)
+                        }
+                }
+
     }
 }
