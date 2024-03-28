@@ -32,6 +32,7 @@ let productList: [ProductModel] = [
 
 
 
+
 struct BrandModel: Identifiable {
     let id = UUID()
     let brandName: String

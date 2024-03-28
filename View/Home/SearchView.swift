@@ -20,13 +20,13 @@ struct SearchView: View {
         var filteredList = productList
         
         // Apply filters based on selected criteria
-        if selectedColor != "Any" {
+        if selectedColor != "Select a color" {
             filteredList = filteredList.filter { $0.color == selectedColor }
         }
-        if selectedSize != "Any" {
+        if selectedSize != "Select a size" {
             filteredList = filteredList.filter { $0.sizes.contains(selectedSize) }
         }
-        if selectedBrand != "Any" {
+        if selectedBrand != "Select a brand" {
             filteredList = filteredList.filter { $0.brand == selectedBrand }
         }
         
@@ -128,17 +128,17 @@ struct FilterModalView: View {
     
     var colorOptions: [String] {
         let colors = Set(productList.map { $0.color })
-        return ["Any"] + Array(colors)
+        return ["Select a color"] + Array(colors)
     }
     
     var sizeOptions: [String] {
         let sizes = Set(productList.flatMap { $0.sizes })
-        return ["Any"] + Array(sizes)
+        return ["Select a size"] + Array(sizes)
     }
     
     var brandOptions: [String] {
         let brands = Set(productList.map { $0.brand })
-        return ["Any"] + Array(brands)
+        return ["Select a brand"] + Array(brands)
     }
     
     var body: some View {
