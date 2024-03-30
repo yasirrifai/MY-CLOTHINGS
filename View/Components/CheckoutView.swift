@@ -76,6 +76,7 @@ struct CheckoutView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 showAlert = false
                 cartManager.clearCart()
+                navigateToBottomNavigationBar = true
             }
         }
 

@@ -130,6 +130,6 @@ struct ProfilePaymentsView: View {
         }
         .padding()
         .background(Color("BackgroundColor"))
-        .foregroundColor(Color("TextColor")) 
+        .foregroundColor(Color("TextColor"))
     }
 }
