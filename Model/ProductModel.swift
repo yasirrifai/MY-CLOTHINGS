@@ -23,11 +23,11 @@ struct ProductModel: Identifiable {
 }
 
 let productList: [ProductModel] = [
-    ProductModel(name: "Mens T-Shirt", price: 20, imageName: "img1", color: "blue", category: "Mens", title: "Mens", sizes: ["L","M","S"], brand: "H&M", description: "A comfortable and stylish t-shirt for everyday wear.", quantity: 3),
-    ProductModel(name: "Mens Jeans", price: 40, imageName: "img2", color: "white", category: "Mens", title: "Mens", sizes: ["L","M","S"], brand: "H&M", description: "Classic denim jeans that fit perfectly and look great.", quantity: 3),
-    ProductModel(name: "Womens Hoodie", price: 60, imageName: "img3", color: "red", category: "Womens", title: "Womens", sizes: ["L","XL","S"], brand: "Forever 21", description: "Stay cozy and stylish with this vibrant red hoodie.", quantity: 3),
-    ProductModel(name: "Unisex Sneakers", price: 80, imageName: "img4", color: "green", category: "Unisex", title: "Kids", sizes: ["L","M","S"], brand: "Nike", description: "Sporty and comfortable sneakers for your active lifestyle.", quantity: 3),
-    ProductModel(name: "Kids Cap", price: 15, imageName: "img5", color: "brown", category: "Kids", title: "Kids", sizes: ["XL"], brand: "Gap", description: "Complete your child's casual look with this trendy brown cap from Gap.", quantity: 3)
+    ProductModel(name: "Mens T-Shirt", price: 20, imageName: "MT", color: "blue", category: "Mens", title: "Mens", sizes: ["L","M","S"], brand: "H&M", description: "A comfortable and stylish t-shirt for everyday wear.", quantity: 3),
+    ProductModel(name: "Mens Jeans", price: 40, imageName: "MJ", color: "blue", category: "Mens", title: "Mens", sizes: ["L","M","S"], brand: "H&M", description: "Classic denim jeans that fit perfectly and look great.", quantity: 3),
+    ProductModel(name: "Womens Hoodie", price: 60, imageName: "WH", color: "red", category: "Womens", title: "Womens", sizes: ["L","XL","S"], brand: "Forever 21", description: "Stay cozy and stylish with this vibrant red hoodie.", quantity: 3),
+    ProductModel(name: "Unisex Sneakers", price: 80, imageName: "US", color: "yellow", category: "Unisex", title: "Kids", sizes: ["L","M","S"], brand: "Nike", description: "Sporty and comfortable sneakers for your active lifestyle.", quantity: 3),
+    ProductModel(name: "Kids Cap", price: 15, imageName: "KC", color: "white", category: "Kids", title: "Kids", sizes: ["XL"], brand: "Gap", description: "Complete your child's casual look with this trendy brown cap from Gap.", quantity: 3)
 ]
 
 

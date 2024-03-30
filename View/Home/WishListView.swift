@@ -11,7 +11,7 @@ struct WishListView: View {
     @State private var emailOrPhone: String = ""
     @State private var showRegisterView: Bool = false
     @EnvironmentObject var cartManager : ShoppingCartViewModel
-
+    
     var body: some View {
         VStack {
             HStack{
@@ -40,32 +40,27 @@ struct WishListView: View {
             }
             VStack{
                 
-
-                           Button(action: {
-                              
-                            
-                           }) {
-                               Text("SUBSCRIBE")
-                                   .foregroundColor(.white)
-                                   .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                                   .padding()
-                                   .background(Color.black)
-                                   .cornerRadius(10)
-                           }
-                           .padding()
-
-
-                  
-                   
-        
+                
+                Button(action: {
+                    
+                    
+                }) {
+                    Text("SUBSCRIBE")
+                        .foregroundColor(.white)
+                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        .padding()
+                        .background(Color.black)
+                        .cornerRadius(10)
+                }
+                .padding()
                 
             }
             Spacer()
-           
-            } .padding(30)
+            
+        } .padding(30)
         
-        }
-           
+    }
+    
     
 }
 

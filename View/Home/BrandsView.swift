@@ -9,13 +9,13 @@ import SwiftUI
 
 struct BrandsView: View {
     @EnvironmentObject var cartManager: ShoppingCartViewModel
-
+    
     var body: some View {
-  
-
+        
+        
         BrandsCardView()
             .environmentObject(ShoppingCartViewModel())
-
+        
     }
 }
 

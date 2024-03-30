@@ -8,14 +8,14 @@ import SwiftUI
 
 struct SearchView: View {
     @EnvironmentObject var cartManager: ShoppingCartViewModel
-
+    
     @State private var searchText = ""
     @State private var selectedColor = "Select a color"
     @State private var selectedSize = "Select a size"
     @State private var selectedBrand = "Select a brand"
     @State private var showFilterModal = false
     @State private var selectedProduct: ProductModel?
-
+    
     var filteredProducts: [ProductModel] {
         var filteredList = productList
         
@@ -105,7 +105,7 @@ struct ProductRows: View {
                     .font(.headline)
                     .foregroundColor(.blue)
                     .padding(.horizontal)
-
+                
                 Text("Color: \(product.color), Brand: \(product.brand)")
                     .font(.footnote)
                     .foregroundColor(.gray)

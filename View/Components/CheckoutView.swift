@@ -45,32 +45,40 @@ struct CheckoutView: View {
 
                 Button(action: {
                     showAlert = true
-                    cartManager.clearCart()
+                    handlePayment()
+                    
+                    
                 }) {
                     Text("Pay now")
                         .foregroundColor(.white)
                         .padding()
-                        .background(Color.orange)
+                        .background(Color.green)
                         .cornerRadius(10)
                 }
                 .alert(isPresented: $showAlert) {
                     Alert(title: Text("Order Placed"), message: Text("Thank you for your purchase!"), dismissButton: .default(Text("OK")) {
                         navigateToBottomNavigationBar = true
                         mode.wrappedValue.dismiss()
+                    
                     })
                 }
                 .padding(.horizontal)
                 .padding(.bottom)
-                .background(
-                    NavigationLink(destination: BottomNavigationBarView(), isActive: $navigateToBottomNavigationBar) {
-                        HomeView()                    }
-                )
+               
+                
 
             }
             .navigationTitle("Checkout")
             .padding()
                     }
     }
+    private func handlePayment() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                showAlert = false
+                cartManager.clearCart()
+            }
+        }
+
 }
 
 struct PaymentMethodSection: View {

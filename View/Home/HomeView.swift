@@ -50,7 +50,7 @@ struct HomeView: View {
                         .italic()
                         .foregroundColor(.gray)
                         .padding(.horizontal)
-          
+                    
                     ProductCategoryView(selectedCategory: $selectedCategory)
                         .environmentObject(cartManager)
                         .padding(.horizontal)

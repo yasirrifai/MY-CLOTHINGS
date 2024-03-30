@@ -102,7 +102,7 @@ struct AddPaymentMethodView: View {
     @State private var newPaymentMethodValidThrough = ""
     @State private var newPaymentMethodCVV = ""
     @Environment(\.presentationMode) var presentationMode
-
+    
     var body: some View {
         NavigationView {
             Form {
@@ -133,13 +133,13 @@ struct AddPaymentMethodView: View {
             }
             .navigationTitle("Add Payment Method")
             .navigationBarItems(trailing: Button(action: {
-                           presentationMode.wrappedValue.dismiss()
-                       }) {
-                           Image(systemName: "xmark")
-                               .foregroundColor(.red)
-                               .aspectRatio(contentMode: .fit)
-                               .frame(width: 24, height: 24)
-                       })
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "xmark")
+                    .foregroundColor(.red)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 24, height: 24)
+            })
         }
     }
 }

@@ -16,9 +16,10 @@ struct CategoryBrand: Identifiable {
 }
 
 let productCategoryList: [CategoryBrand] = [
-    CategoryBrand(title: "All", icon: "img1"),
-    CategoryBrand(title: "Mens", icon: "img2"),
-    CategoryBrand(title: "Womens", icon: "img3"),
+    CategoryBrand(title: "All", icon: "All"),
+    CategoryBrand(title: "Mens", icon: "Mens"),
+    CategoryBrand(title: "Womens", icon: "Womens"),
+    CategoryBrand(title: "Kids", icon: "Kids"),
     // Add other categories as needed
 ]
 

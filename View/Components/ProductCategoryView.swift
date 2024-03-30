@@ -9,7 +9,7 @@ import SwiftUI
 struct ProductCategoryView: View {
     @Binding var selectedCategory: String
     @EnvironmentObject var cartManager: ShoppingCartViewModel
-
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {

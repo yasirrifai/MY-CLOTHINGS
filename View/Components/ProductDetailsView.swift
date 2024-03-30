@@ -15,7 +15,7 @@ struct ProductDetailsView: View {
     @State private var selectedColor = "Select a color"
     @State private var selectedQuantity = 1
     @State private var showToast = false
-    @State private var toastMessage = "" 
+    @State private var toastMessage = ""
     
     var body: some View {
         ScrollView {
@@ -37,7 +37,7 @@ struct ProductDetailsView: View {
                         .font(.headline)
                         .foregroundColor(.blue)
                         .padding(.horizontal)
-
+                    
                 }
                 
                 Divider()
@@ -120,7 +120,7 @@ struct ToastView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-           
+                
                 HStack {
                     Text(message)
                         .foregroundColor(.white)

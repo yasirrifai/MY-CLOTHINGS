@@ -10,7 +10,7 @@ struct ProductCardView: View {
     var product: ProductModel
     @EnvironmentObject var cartManager: ShoppingCartViewModel
     @State private var isButtonClicked = false
-
+    
     var body: some View {
         ZStack(alignment: .leading) {
             Image(product.imageName)
@@ -25,7 +25,7 @@ struct ProductCardView: View {
                         .font(.system(size: 28, weight: .semibold))
                         .frame(width: 140)
                         .foregroundColor(.black)
-                        
+                    
                     Text(product.category)
                         .font(.callout)
                         .padding()
@@ -39,8 +39,8 @@ struct ProductCardView: View {
                         
                         Spacer()
                         NavigationLink(destination: ProductDetailsView(product: product).environmentObject(ShoppingCartViewModel()), isActive: $isButtonClicked) {
-                                        EmptyView()
-                                    }
+                            EmptyView()
+                        }
                         Button {
                             isButtonClicked =  true
                         } label: {

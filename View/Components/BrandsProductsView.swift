@@ -45,7 +45,7 @@ struct ProductRowView: View {
                         .font(.headline)
                         .foregroundColor(.blue)
                         .padding(.horizontal)
-
+                    
                 }
                 .padding(.bottom, 10)
             }

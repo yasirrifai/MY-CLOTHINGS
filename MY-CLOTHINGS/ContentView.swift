@@ -5,7 +5,6 @@ struct ContentView: View {
     @Binding var isAppLoaded: Bool
     var body: some View {
         VStack {
-            // Brand Logo
             Image("MY")
                 .resizable()
                 .aspectRatio(contentMode: .fit)

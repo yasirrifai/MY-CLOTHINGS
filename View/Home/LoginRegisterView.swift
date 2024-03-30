@@ -64,10 +64,11 @@ struct LoginRegisterView: View {
     }
     
     private func emailTextField() -> some View {
-        TextField("Email", text: $wishListViewModel.username)
+        TextField("Username", text: $wishListViewModel.username)
             .padding()
             .background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
             .padding(.horizontal)
+            .textInputAutocapitalization(.never)
     }
     
     private func passwordSecureField() -> some View {
@@ -77,45 +78,55 @@ struct LoginRegisterView: View {
             .padding(.horizontal)
     }
     
-    private func loginOrRegisterOptions() -> some View {
-        HStack(spacing: 20) {
-            if isLoginSelected {
-                loginOption()
-            } else {
-                registerOption()
-            }
-        }
-        .padding(.horizontal)
-    }
-
     private func loginOption() -> some View {
-        Text("Login to continue")
+        Text("Are you a new user? click here to  Register")
             .foregroundColor(.blue)
-            .font(.footnote) // smaller text size
+            .font(.footnote) 
             .onTapGesture {
                 isLoginSelected = true
             }
     }
-
+    
     private func registerOption() -> some View {
-        Text("Are you a new user? Register to continue")
+        Text("Existing user? Click here to Login")
             .foregroundColor(.green)
-            .font(.footnote) // smaller text size
+            .font(.footnote)
             .onTapGesture {
                 isLoginSelected = false
             }
     }
-
-
+    
+    
+    private func loginOrRegisterOptions() -> some View {
+        HStack(spacing: 20) {
+            Text(isLoginSelected ? "Are you a new user? Click here to Register" : "Existing user? Click here to Login")
+                .foregroundColor(isLoginSelected ? .blue : .green)
+                .font(.footnote)
+                .onTapGesture {
+                    isLoginSelected.toggle()
+                }
+        }
+        .padding(.horizontal)
+    }
+    
     private func loginOrRegisterButton() -> some View {
         Button(action: {
-            // Validate user
+            guard !wishListViewModel.username.isEmpty else {
+                showAlert = true
+                return
+            }
+            guard !wishListViewModel.password.isEmpty else {
+                showAlert = true
+                return
+            }
             wishListViewModel.validateUser()
             if wishListViewModel.succes {
                 showAlert = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     navigateToCheckout = true
                 }
+            } else {
+                showAlert = true
             }
         }) {
             Text(isLoginSelected ? "Login" : "Register")
@@ -126,8 +137,12 @@ struct LoginRegisterView: View {
         }
         .padding(.horizontal)
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Success"), message: Text(isLoginSelected ? "Login successful!" : "Registration successful!"), dismissButton: .default(Text("OK")))
+            if wishListViewModel.succes {
+                return Alert(title: Text("Success"), message: Text(isLoginSelected ? "Login successful!" : "Registration successful!"), dismissButton: .default(Text("OK")))
+            } else {
+                return Alert(title: Text("Error"), message: Text("Invalid username or password"), dismissButton: .default(Text("OK")))
+            }
         }
     }
-
+    
 }

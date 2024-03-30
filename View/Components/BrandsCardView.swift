@@ -63,7 +63,7 @@ struct BrandCardView: View {
             }
         }
         .cornerRadius(20)
-     
+        
     }
 }
 

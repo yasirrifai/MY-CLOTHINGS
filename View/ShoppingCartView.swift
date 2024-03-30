@@ -28,7 +28,7 @@ struct ShoppingCartView: View {
                         .padding()
                     }
                     .padding(.vertical)
-
+                    
                     ForEach(cartManager.products) { product in
                         CartProductRow(product: product, cartManager: _cartManager)
                     }
@@ -52,7 +52,7 @@ struct ShoppingCartView: View {
                     .background(Color.white)
                     .cornerRadius(10)
                     .shadow(radius: 5)
-
+                    
                     if cartManager.products.count > 0 {
                         Button(action: {
                             cartManager.clearCart()
@@ -67,7 +67,7 @@ struct ShoppingCartView: View {
                         }
                         .padding(.horizontal)
                     }
-
+                    
                     Button(action: {
                         if cartManager.products.count > 0 {
                             if isLoggedIn {
@@ -109,7 +109,7 @@ struct ShoppingCartView: View {
 struct CartProductRow: View {
     let product: ProductModel
     @EnvironmentObject var cartManager: ShoppingCartViewModel
-
+    
     var body: some View {
         HStack(spacing: 20) {
             Image(product.imageName)
@@ -119,7 +119,7 @@ struct CartProductRow: View {
                 .cornerRadius(8)
                 .padding(8)
                 .background(Color.gray.opacity(0.1))
-
+            
             VStack(alignment: .leading, spacing: 4) {
                 Text(product.name)
                     .font(.headline)
@@ -128,7 +128,7 @@ struct CartProductRow: View {
                     .font(.headline)
                     .foregroundColor(.blue)
                     .padding(.horizontal)
-
+                
                 
                 HStack(spacing: 10) {
                     Button(action: {

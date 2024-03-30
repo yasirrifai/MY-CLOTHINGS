@@ -21,7 +21,7 @@ struct AccountView: View {
                     Spacer()
                     
                     Button(action: {
-                       
+                        
                     }) {
                         Image(systemName: "person.circle")
                             .font(.system(size: 60))
@@ -43,7 +43,7 @@ struct AccountView: View {
                         }
                         Spacer()
                     }
-              
+                    
                     NavigationLink(destination: WalletView()) {
                         VStack {
                             Image(systemName: "wallet.pass.fill")
@@ -65,9 +65,9 @@ struct AccountView: View {
                                 .font(.headline)
                                 .foregroundColor(.black)
                         }
-                       
+                        
                     }
-             
+                    
                 }
                 .padding()
                 
@@ -83,14 +83,14 @@ struct AccountView: View {
                             .foregroundColor(.black)
                     }
                     .padding(.top, 10)
-//                    
-//                    NavigationLink(destination: ProfilePaymentsView()) {
-//                        Label("Payments", systemImage: "creditcard")
-//                            .frame(maxWidth: .infinity, alignment: .leading)
-//                            .font(.system(size: 20))
-//                            .foregroundColor(.black)
-//                    }
-//                    .padding(.top, 10)
+                    //                    
+                    //                    NavigationLink(destination: ProfilePaymentsView()) {
+                    //                        Label("Payments", systemImage: "creditcard")
+                    //                            .frame(maxWidth: .infinity, alignment: .leading)
+                    //                            .font(.system(size: 20))
+                    //                            .foregroundColor(.black)
+                    //                    }
+                    //                    .padding(.top, 10)
                     
                     NavigationLink(destination: ProfileSettingsView()) {
                         Label("Settings", systemImage: "gear")
@@ -112,7 +112,7 @@ struct AccountView: View {
                 Spacer()
                 
                 Button(action: {
-            
+                    
                 }) {
                     RoundedRectangle(cornerRadius: 12)
                         .frame(height: 50)
@@ -122,7 +122,7 @@ struct AccountView: View {
                 }
                 .padding(.bottom, 20)
             }
-                .padding(.vertical)
+            .padding(.vertical)
             .padding(.horizontal)
         }
     }

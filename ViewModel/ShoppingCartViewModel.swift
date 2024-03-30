@@ -11,7 +11,7 @@ import Combine
 class ShoppingCartViewModel: ObservableObject {
     @Published private(set) var products: [ProductModel] = []
     @Published private(set) var total: Double = 0
-
+    
     func addToCart(product: ProductModel) {
         if let index = products.firstIndex(where: { $0.id == product.id }) {
             products[index].quantity += 1
@@ -20,7 +20,7 @@ class ShoppingCartViewModel: ObservableObject {
         }
         total += Double(product.price)
     }
-
+    
     func removeFromCart(product: ProductModel) {
         if let index = products.firstIndex(where: { $0.id == product.id }) {
             if products[index].quantity > 1 {
@@ -32,7 +32,7 @@ class ShoppingCartViewModel: ObservableObject {
             total -= Double(product.price)
         }
     }
-
+    
     
     func clearCart() {
         products.removeAll()
