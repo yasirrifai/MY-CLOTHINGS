@@ -35,6 +35,7 @@
 		4C47FA772BA0CF1B00582B4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C47FA762BA0CF1B00582B4B /* ContentView.swift */; };
 		4C47FA792BA0CF1C00582B4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C47FA782BA0CF1C00582B4B /* Assets.xcassets */; };
 		4C47FA7C2BA0CF1C00582B4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C47FA7B2BA0CF1C00582B4B /* Preview Assets.xcassets */; };
+		4CC06A552BB61CC60090D07F /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC06A542BB61CC60090D07F /* ProductViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		4C47FA762BA0CF1B00582B4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4C47FA782BA0CF1C00582B4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C47FA7B2BA0CF1C00582B4B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4CC06A542BB61CC60090D07F /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			children = (
 				4C161B782BA2FCC2006FF8B1 /* ShoppingCartViewModel.swift */,
 				4C161B9F2BA9FD9F006FF8B1 /* WishListViewModel.swift */,
+				4CC06A542BB61CC60090D07F /* ProductViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				4C161B9A2BA784E6006FF8B1 /* ProfileDetailsView.swift in Sources */,
 				4C161BA22BAEDB36006FF8B1 /* SearchView.swift in Sources */,
 				4C161B852BA323B3006FF8B1 /* ProductCategoryModel.swift in Sources */,
+				4CC06A552BB61CC60090D07F /* ProductViewModel.swift in Sources */,
 				4C47FA752BA0CF1B00582B4B /* MY_CLOTHINGSApp.swift in Sources */,
 				4C161B7E2BA31510006FF8B1 /* ProductCardView.swift in Sources */,
 				4C161B832BA32331006FF8B1 /* ProductCategoryView.swift in Sources */,

@@ -27,8 +27,8 @@ struct CheckoutView: View {
                 
                 List {
                     Section(header: Text("Product Details")) {
-                        ForEach(products) { product in
-                            ProductRows(product: product)
+                        ForEach(cartManager.products) { cartItem in
+                            ProductRows(product: cartItem)
                         }
                     }
                     
@@ -63,7 +63,7 @@ struct CheckoutView: View {
                 .padding(.bottom)
                 .background(
                     NavigationLink(destination: BottomNavigationBarView(), isActive: $navigateToBottomNavigationBar) {
-                        BottomNavigationBarView()                    }
+                        HomeView()                    }
                 )
 
             }

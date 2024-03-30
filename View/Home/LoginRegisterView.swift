@@ -79,15 +79,18 @@ struct LoginRegisterView: View {
     
     private func loginOrRegisterOptions() -> some View {
         HStack(spacing: 20) {
-            loginOption()
-            registerOption()
+            if isLoginSelected {
+                loginOption()
+            } else {
+                registerOption()
+            }
         }
         .padding(.horizontal)
     }
-    
+
     private func loginOption() -> some View {
-        Text(isLoginSelected ? "Are you a new user? Register to continue" : "")
-            .foregroundColor(isLoginSelected ? .blue : .secondary)
+        Text("Login to continue")
+            .foregroundColor(.blue)
             .font(.footnote) // smaller text size
             .onTapGesture {
                 isLoginSelected = true
@@ -95,21 +98,12 @@ struct LoginRegisterView: View {
     }
 
     private func registerOption() -> some View {
-        if isLoginSelected {
-            return Text("Are you a new user? Register to continue")
-                .foregroundColor(.green)
-                .font(.footnote) // smaller text size
-                .onTapGesture {
-                    isLoginSelected = false
-                }
-        } else {
-            return Text("Login to continue")
-                .foregroundColor(.blue)
-                .font(.footnote) // smaller text size
-                .onTapGesture {
-                    isLoginSelected = true
-                }
-        }
+        Text("Are you a new user? Register to continue")
+            .foregroundColor(.green)
+            .font(.footnote) // smaller text size
+            .onTapGesture {
+                isLoginSelected = false
+            }
     }
 
 

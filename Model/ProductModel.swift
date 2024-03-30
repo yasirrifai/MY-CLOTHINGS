@@ -52,3 +52,12 @@ let clothingBrands: [BrandModel] = [
     BrandModel(brandName: "Puma", brandImage: "puma", brandColor: Color(red: 0.9, green: 0.5, blue: 0.2))
 ]
 
+
+struct Welcome: Codable {
+    let name: String
+    let images: [String]
+    let brand: String
+    let colors, sizes: [String]
+    let quantity, pricePerQty: Int
+    let category, title, description: String
+}
