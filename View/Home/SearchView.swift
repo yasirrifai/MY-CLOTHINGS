@@ -74,7 +74,7 @@ struct SearchView: View {
             }
             .navigationTitle("Search Products")
             .sheet(isPresented: $showFilterModal) {
-                FilterModalView(selectedColor: $selectedColor, selectedSize: $selectedSize, selectedBrand: $selectedBrand, showFilterModal: $showFilterModal, productList: productVM.productList)
+                FilterModalView(selectedColor: $selectedColor, selectedSize: $selectedSize, selectedBrand: $selectedBrand, showFilterModal: $showFilterModal, productVM: productVM, productList: productVM.productList)
             }
         }
     }
@@ -123,6 +123,9 @@ struct FilterModalView: View {
     @Binding var selectedBrand: String
     @Binding var showFilterModal: Bool
     
+    @StateObject var productVM: ProductViewModel
+
+    
     let productList: [Product]
     
     var colorOptions: [String] {
@@ -164,6 +167,8 @@ struct FilterModalView: View {
             .pickerStyle(MenuPickerStyle())
             
             Button("Apply Filters") {
+                let filter = "color=\(selectedColor)&size=\(selectedSize)&brand=\(selectedBrand)"
+                                productVM.loadProducts(filter: filter)
                 showFilterModal = false
             }
             .padding()

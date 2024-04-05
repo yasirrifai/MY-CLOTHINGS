@@ -11,7 +11,11 @@ class ProductViewModel: ObservableObject {
         loadProducts()
     }
     
-    func loadProducts() {
+    func loadProducts(filter: String? = nil) {
+        var urlString = baseUrl
+                if let filter = filter {
+                    urlString += "/filter?\(filter)"
+                }
         guard let url = URL(string: baseUrl) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
