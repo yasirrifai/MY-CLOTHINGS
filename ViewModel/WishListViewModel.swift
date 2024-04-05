@@ -21,7 +21,7 @@ class WishListViewModel: ObservableObject {
             showError = true
             errorMessage = "Please enter username and password to continue"
         }
-        else if username == "abc" && password == "123" {
+        else if username == "myrifai" && password == "myrifai@123" {
             showError = false
             succes = true
             

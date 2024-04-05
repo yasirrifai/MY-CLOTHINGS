@@ -8,20 +8,21 @@ import SwiftUI
 
 struct SearchView: View {
     @EnvironmentObject var cartManager: ShoppingCartViewModel
-    
+    @StateObject var productVM: ProductViewModel = ProductViewModel()
+
     @State private var searchText = ""
     @State private var selectedColor = "Select a color"
     @State private var selectedSize = "Select a size"
     @State private var selectedBrand = "Select a brand"
     @State private var showFilterModal = false
-    @State private var selectedProduct: ProductModel?
+    @State private var selectedProduct: Product?
     
-    var filteredProducts: [ProductModel] {
-        var filteredList = productList
+    var filteredProducts: [Product] {
+        var filteredList = productVM.productList
         
         // Apply filters based on selected criteria
         if selectedColor != "Select a color" {
-            filteredList = filteredList.filter { $0.color == selectedColor }
+            filteredList = filteredList.filter { $0.color.contains(selectedColor)}
         }
         if selectedSize != "Select a size" {
             filteredList = filteredList.filter { $0.sizes.contains(selectedSize) }
@@ -64,7 +65,7 @@ struct SearchView: View {
                         .padding()
                 } else {
                     List(filteredProducts) { product in
-                        NavigationLink(destination: ProductDetailsView(product: product).environmentObject(cartManager)) {
+                        NavigationLink(destination: ProductDetailsView(selectedProduct: product).environmentObject(cartManager)) {
                             ProductRows(product: product)
                                 .environmentObject(cartManager)
                         }
@@ -73,7 +74,7 @@ struct SearchView: View {
             }
             .navigationTitle("Search Products")
             .sheet(isPresented: $showFilterModal) {
-                FilterModalView(selectedColor: $selectedColor, selectedSize: $selectedSize, selectedBrand: $selectedBrand, showFilterModal: $showFilterModal, productList: productList)
+                FilterModalView(selectedColor: $selectedColor, selectedSize: $selectedSize, selectedBrand: $selectedBrand, showFilterModal: $showFilterModal, productList: productVM.productList)
             }
         }
     }
@@ -87,21 +88,19 @@ struct SearchView_Previews: PreviewProvider {
 }
 
 struct ProductRows: View {
-    let product: ProductModel
+    let product: Product
     
     var body: some View {
         HStack {
-            Image(product.imageName) 
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 80, height: 80)
-                .cornerRadius(8)
-            
+            ProductImageView(imageUrl: URL(string: product.images))
+                .frame(width: 100, height: 100)
+                .cornerRadius(30)
+
             VStack(alignment: .leading, spacing: 4) {
                 Text(product.name)
                     .font(.headline)
                     .fontWeight(.semibold)
-                Text("$\(String(format: "%.2f", product.price))")
+                Text("$\( product.pricePerQty).00")
                     .font(.headline)
                     .foregroundColor(.blue)
                     .padding(.horizontal)
@@ -124,10 +123,10 @@ struct FilterModalView: View {
     @Binding var selectedBrand: String
     @Binding var showFilterModal: Bool
     
-    let productList: [ProductModel]
+    let productList: [Product]
     
     var colorOptions: [String] {
-        let colors = Set(productList.map { $0.color })
+        let colors = Set(productList.map{ $0.color })
         return ["Select a color"] + Array(colors)
     }
     

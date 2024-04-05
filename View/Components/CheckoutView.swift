@@ -10,7 +10,7 @@ struct CheckoutView: View {
     @Environment(\.presentationMode) var mode
     @EnvironmentObject var cartManager: ShoppingCartViewModel
 
-    let products: [ProductModel] 
+    let products: [Product] 
     @StateObject var walletManager = WalletManager()
     
     @State private var selectedPaymentMethod: PaymentMethod?

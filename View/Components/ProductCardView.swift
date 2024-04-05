@@ -5,20 +5,19 @@
 //  Created by Yasir Rifai on 2024-03-14.
 //
 import SwiftUI
+import Kingfisher
 
 struct ProductCardView: View {
-    var product: ProductModel
+    var product: Product
     @EnvironmentObject var cartManager: ShoppingCartViewModel
     @State private var isButtonClicked = false
     
     var body: some View {
         ZStack(alignment: .leading) {
-            Image(product.imageName)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 500,height: 300)
+            ProductImageView(imageUrl: URL(string: product.images))
+                .frame(width: 400, height: 400)
                 .padding(.trailing, -200)
-                .rotationEffect(Angle(degrees: 20))
+                .rotationEffect(Angle(degrees: 30))
             ZStack {
                 VStack(alignment: .leading) {
                     Text(product.name)
@@ -38,7 +37,7 @@ struct ProductCardView: View {
                         Text("Explore more")
                         
                         Spacer()
-                        NavigationLink(destination: ProductDetailsView(product: product).environmentObject(ShoppingCartViewModel()), isActive: $isButtonClicked) {
+                        NavigationLink(destination: ProductDetailsView(selectedProduct: product).environmentObject(ShoppingCartViewModel()), isActive: $isButtonClicked) {
                             EmptyView()
                         }
                         Button {
@@ -71,4 +70,5 @@ struct ProductCardView: View {
         .background(Color(.cyan).opacity(0.3))
         .clipShape(RoundedRectangle(cornerRadius: 60))
     }
+  
 }

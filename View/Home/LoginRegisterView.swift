@@ -15,7 +15,8 @@ import SwiftUI
 struct LoginRegisterView: View {
     @Binding var isLoggedIn: Bool
     @StateObject var wishListViewModel = WishListViewModel()
-    
+    @StateObject var productVM: ProductViewModel = ProductViewModel()
+
     @State private var isLoginSelected = true
     @State private var showAlert = false
     @State private var navigateToCheckout = false
@@ -44,7 +45,7 @@ struct LoginRegisterView: View {
         .shadow(radius: 5)
         .padding()
         .fullScreenCover(isPresented: $navigateToCheckout) {
-            CheckoutView(products: productList)
+            CheckoutView(products: productVM.productList)
         }
     }
     

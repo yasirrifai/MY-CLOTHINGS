@@ -10,7 +10,7 @@ struct HomeView: View {
     @State private var showShoppingCart = false
     @State private var selectedCategory: String = "All"
     @StateObject var cartManager = ShoppingCartViewModel()
-    @State var allProducts: [ProductModel] = productList
+    @StateObject var productVM = ProductViewModel()
     
     var body: some View {
         NavigationView {
@@ -60,7 +60,7 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
                             ForEach(filteredProducts, id: \.id) { product in
-                                NavigationLink(destination: ProductDetailsView(product: product).environmentObject(cartManager)) {
+                                NavigationLink(destination: ProductDetailsView(selectedProduct: product).environmentObject(cartManager)) {
                                     ProductCardView(product: product)
                                         .environmentObject(cartManager)
                                 }
@@ -78,11 +78,11 @@ struct HomeView: View {
         }
     }
     
-    var filteredProducts: [ProductModel] {
+    var filteredProducts: [Product] {
         if selectedCategory == "All" {
-            return allProducts
+            return productVM.productList
         } else {
-            return allProducts.filter { $0.category == selectedCategory }
+            return productVM.productList.filter { $0.category == selectedCategory }
         }
     }
 }

@@ -10,7 +10,8 @@ import SwiftUI
 
 struct BrandsCardView: View {
     @EnvironmentObject var cartManager: ShoppingCartViewModel
-    
+    @StateObject var productVM: ProductViewModel = ProductViewModel()
+
     var body: some View {
         ScrollView {
             VStack {
@@ -19,15 +20,15 @@ struct BrandsCardView: View {
                     .padding(.trailing)
                 
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-                    ForEach(clothingBrands) { brand in
-                        NavigationLink(destination: BrandsProductsView(brand: brand, products: productList.filter { $0.brand == brand.brandName })) {
-                            BrandCardView(brand: brand)
-                        }
-                        .buttonStyle(PlainButtonStyle()) 
-                        .padding(.horizontal)
-                    }
-                }
-                .padding(.top, 20)
+                                    ForEach(clothingBrands) { brand in
+                                        NavigationLink(destination: BrandsProductsView(brand: brand, productVM: productVM)) {
+                                            BrandCardView(brand: brand)
+                                        }
+                                        .buttonStyle(PlainButtonStyle())
+                                        .padding(.horizontal)
+                                    }
+                                }
+                                .padding(.top, 20)
             }
         }
         .navigationTitle("Brands")

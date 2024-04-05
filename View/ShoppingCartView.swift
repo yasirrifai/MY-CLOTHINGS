@@ -107,24 +107,21 @@ struct ShoppingCartView: View {
     }
 }
 struct CartProductRow: View {
-    let product: ProductModel
+    let product: Product
     @EnvironmentObject var cartManager: ShoppingCartViewModel
     
     var body: some View {
         HStack(spacing: 20) {
-            Image(product.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 80, height: 80)
-                .cornerRadius(8)
-                .padding(8)
-                .background(Color.gray.opacity(0.1))
+            ProductImageView(imageUrl: URL(string: product.images))
+                .cornerRadius(15)
+                .frame(width: 100, height: 100)
+
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(product.name)
                     .font(.headline)
                     .fontWeight(.bold)
-                Text("$\(String(format: "%.2f", product.price))")
+                Text("$\( product.pricePerQty).00")
                     .font(.headline)
                     .foregroundColor(.blue)
                     .padding(.horizontal)

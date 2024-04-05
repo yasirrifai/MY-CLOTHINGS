@@ -8,40 +8,44 @@
 import SwiftUI
 struct BrandsProductsView: View {
     let brand: BrandModel
-    let products: [ProductModel]
-    
+    let productVM: ProductViewModel
+    @State private var selectedProduct: Product?
+
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 15) {
-                ForEach(products) { product in
+                ForEach(productVM.productList.filter { $0.brand == brand.brandName }) { product in
                     ProductRowView(product: product)
                 }
                 .padding(.horizontal)
             }
         }
         .navigationTitle(brand.brandName)
+        .sheet(item: $selectedProduct) { product in
+                    ProductDetailsView(selectedProduct: product) 
+                }
+        .onAppear {
+                    productVM.loadProducts() // Load products for the selected brand
+                }
     }
 }
 
+
 struct ProductRowView: View {
-    let product: ProductModel
+    let product: Product
     @State private var isDetailViewActive = false // State variable to control navigation
     
     var body: some View {
         VStack(spacing: 10) {
             ZStack(alignment: .bottomLeading) {
-                Image(product.imageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 180)
-                    .cornerRadius(15)
+                ProductImageView(imageUrl: URL(string: product.images))
                 
                 VStack(alignment: .leading, spacing: 5) {
                     Text(product.name)
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding(.horizontal)
-                    Text("$\(String(format: "%.2f", product.price))")
+                    Text("$\(String( product.pricePerQty)).00")
                         .font(.headline)
                         .foregroundColor(.blue)
                         .padding(.horizontal)
@@ -65,7 +69,7 @@ struct ProductRowView: View {
             }
             .padding(.horizontal)
             .sheet(isPresented: $isDetailViewActive) {
-                ProductDetailsView(product: product)
+                ProductDetailsView(selectedProduct: product)
                 
             }
         }
@@ -75,9 +79,9 @@ struct ProductRowView: View {
 
 struct BrandsProductsView_Previews: PreviewProvider {
     static var previews: some View {
-        let selectedBrand = clothingBrands[0] 
-        let selectedProducts = productList.filter { $0.brand == selectedBrand.brandName }
-        return BrandsProductsView(brand: selectedBrand, products: selectedProducts)
-            .environmentObject(ShoppingCartViewModel())
+        let productVM = ProductViewModel()
+        let selectedBrand = clothingBrands[0]
+        return BrandsProductsView(brand: selectedBrand, productVM: productVM)
+                    .environmentObject(ShoppingCartViewModel())
     }
 }
